@@ -9,8 +9,8 @@ router.use('/:id', validateUserId);
 router.post('/', validateUser, (req, res) => {
 	userDb
 		.insert(req.body)
-		.then((response) => {
-			res.status(200).json(response);
+		.then((r) => {
+			res.status(200).json(r);
 		})
 		.catch((err) => {
 			res.status(500).json({
@@ -23,8 +23,8 @@ router.post('/', validateUser, (req, res) => {
 router.post('/:id/posts', validatePost, (req, res) => {
 	postDb
 		.insert(req.body)
-		.then((response) => {
-			res.status(200).json(response);
+		.then((r) => {
+			res.status(200).json(r);
 		})
 		.catch((err) => {
 			console.log(err);
@@ -37,10 +37,10 @@ router.post('/:id/posts', validatePost, (req, res) => {
 router.get('/', (req, res) => {
 	userDb
 		.get()
-		.then((response) => {
+		.then((r) => {
 			res.status(200).json({
 				message: 'Retrieved User List',
-				users: response,
+				users: r,
 			});
 		})
 		.catch((err) => {
@@ -54,10 +54,10 @@ router.get('/', (req, res) => {
 router.get('/:id', (req, res) => {
 	userDb
 		.getById(req.params.id)
-		.then((response) => {
+		.then((r) => {
 			res.status(200).json({
 				message: 'Retrieved User',
-				user: response,
+				user: r,
 			});
 		})
 		.catch((err) => {
@@ -71,10 +71,10 @@ router.get('/:id', (req, res) => {
 router.get('/:id/posts', (req, res) => {
 	userDb
 		.getUserPosts(req.params.id)
-		.then((response) => {
+		.then((r) => {
 			res.status(200).json({
 				message: 'Retrieved posts',
-				posts: response,
+				posts: r,
 			});
 		})
 		.catch((err) => {
@@ -88,10 +88,10 @@ router.get('/:id/posts', (req, res) => {
 router.delete('/:id', (req, res) => {
 	userDb
 		.remove(req.params.id)
-		.then((response) => {
+		.then((r) => {
 			res.status(200).json({
 				message: 'User successfully deleted',
-				response,
+				r,
 			});
 		})
 		.catch((err) => {
@@ -105,10 +105,10 @@ router.delete('/:id', (req, res) => {
 router.put('/:id', (req, res) => {
 	userDb
 		.update(req.params.id, req.body)
-		.then((response) => {
+		.then((r) => {
 			res.status(200).json({
 				message: 'User successfully updated',
-				user: response,
+				user: r,
 			});
 		})
 		.catch((err) => {
